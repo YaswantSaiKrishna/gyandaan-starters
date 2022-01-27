@@ -1,0 +1,28 @@
+<nav *ngIf="type !='userPage'" class="navbar navbar-light navbar-expand-md bg-white border-dark shadow-lg">
+    <div class="container-fluid"><a class="navbar-brand" href="/home">GYANDAAN</a>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="/home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/home/#r1">Login</a></li>
+                <li class="nav-item"><a class="nav-link" href="/register">Register</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contactUs">Contact us</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<nav *ngIf="type =='userPage'" class="navbar navbar-light navbar-expand-md bg-white border-dark shadow-lg">
+    <div class="container-fluid"><a href="/home" class="navbar-brand" href="#">GYANDAAN</a>
+        <div class="collapse navbar-collapse" id="navcol-1">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="/home">Home</a></li>
+                <li class="nav-item border rounded-circle border-dark"
+                    style="width: 40px;background: url(&quot;assets/img/4529183.jpg&quot;) no-repeat;background-size: cover;">
+                    <button class="btn btn-primary active border rounded-circle" type="button"
+                        (click)="logoutmodel()" style="background: url(&quot;assets/img/4529183.jpg&quot;) no-repeat;background-size: cover;height: 40px;width: 36px;"></button>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<router-outlet></router-outlet>

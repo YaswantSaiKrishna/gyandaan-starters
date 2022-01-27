@@ -1,0 +1,14 @@
+.Validation-msg {
+    color: red;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+  }
+.label{
+  margin-left: 1%;
+}
+.footer {
+  text-align: center;
+  background-color: rgb(119, 118, 117);
+  color: white;
+}

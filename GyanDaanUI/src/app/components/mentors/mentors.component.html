@@ -1,0 +1,85 @@
+<main>
+    <br>
+    <br>
+    <section>
+        <!-- <div class="container-fluid text-end d-md-flex justify-content-md-center mt-5">
+            <h1 style="padding: 0px;">Gyans</h1><input class="form-control-sm" type="search">
+            <div class="row row-cols-3 justify-content-center align-items-center">
+                <div class="col"><button class="btn btn-primary" type="button">Search</button></div>
+            </div>
+        </div> -->
+        <label style="font-size: 30px;padding-left: 45%;">Gyans</label>
+        <input style="margin-left: 15%;margin-right: 3%;" type="text" placeholder="               search" (keyup)="searchgyan($event)">
+        <!-- <button class="btn btn-primary">search</button> -->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Gyans</th>
+                                    <th class="text-center">Topic</th>
+                                    <th class="text-center">Time</th>
+                                    <th class="text-center">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let gyan of filterDatagyan" >
+                                    <td class="text-center">{{gyan.myGyan}}</td>
+                                    <td class="text-center">{{gyan.topic}}</td>
+                                    <td class="text-center">{{gyan.startTime}}  &nbsp;&nbsp; to &nbsp;&nbsp; {{gyan.endTime}}</td>
+                                    <td class="text-center"><button class="btn btn-primary" type="button" (click)="submitInterest(gyan)" style="background: var(--bs-table-active-color);">Interested ?</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <br>
+    <br>
+    <br>
+    <section>
+        <!-- <div class="container-fluid d-md-flex justify-content-md-center mt-5">
+            <h1 style="padding: 0px;">Daans</h1><input class="form-control-sm" type="text">
+            <div class="row row-cols-3 justify-content-center align-items-center">
+                <div class="col"><button class="btn btn-primary" type="button">Search</button></div>
+            </div>
+        </div> -->
+            <label style="font-size: 30px;padding-left: 45%;">Daans</label>
+            <input style="margin-left: 15%;margin-right: 3%;" type="text" placeholder="               search" (keyup)="searchdaan($event)">
+        
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">Daans</th>
+                                    <th class="text-center">Topic</th>
+                                    <th class="text-center">Time</th>
+                                    <th class="text-center">Link</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let daan of filterDatadaan" >
+                                    <td class="text-center">{{daan.myGyan}}</td>
+                                    <td class="text-center">{{daan.topic}}</td>
+                                    <td class="text-center">{{daan.startTime}}  &nbsp;&nbsp; to &nbsp;&nbsp; {{daan.endTime}}</td>
+                                    <td class="text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <button class="btn btn-primary" type="button" (click)="submitToJoin()" style="background: var(--bs-table-active-color);">Join</button>
+                                &nbsp;&nbsp;&nbsp;
+                            </td>
+                                
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

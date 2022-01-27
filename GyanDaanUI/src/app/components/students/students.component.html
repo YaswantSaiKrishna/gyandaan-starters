@@ -1,0 +1,109 @@
+<main  id ="gyanGrid">
+    <section>
+        <div class="container d-md-flex justify-content-md-center mt-5">
+            <div class="row">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" (click)="edit()"
+                    data-bs-target="#myModal">Ask Gyan ?</button>
+            </div>
+        </div>
+
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col">
+                    <div class="table-responsive">
+                        <table style="text-align: center;" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>My Gyan</th>
+                                    <th>Topic</th>
+                                    <th>Status</th>
+                                    <th>Time</th>
+                                    <th>Link</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let gyan of gyanData">
+                                    <td>{{gyan.myGyan}}</td>
+                                    <td>{{gyan.topic}}</td>
+                                    <td>{{gyan.status}}</td>
+                                    <td style="text-align: center;">{{gyan.startTime}}   &nbsp;&nbsp;&nbsp;   to   &nbsp;&nbsp;&nbsp;     {{gyan.endTime}}</td>
+                                    <td>
+                                        <a *ngIf="gyan.link !='-'"href = meetingURL data-toggle="tooltip" title={{meetingURL}} >Click Here</a>
+                                        <p *ngIf="gyan.link == '-'" >-</p>
+                                    </td>
+                                    <td><button (click)="edit(gyan)" class="btn btn-primary" data-bs-toggle="modal"
+                                            data-bs-target="#myModal">Edit</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 *ngIf="editText" class="modal-title">Edit Gyan</h4>
+                    <h4 *ngIf="!editText" class="modal-title">Add Gyan</h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="gyanForm">
+                        <div class="mb-3">
+                            <label class="label"><strong>MyGyan:</strong></label>
+                            <textarea class="form-control" formControlName="myGyan"
+                                placeholder="Type Your Question"></textarea>
+                            <div style="color: red;" *ngIf="(!formValid) || (gyanForm.controls.myGyan.dirty)">
+                                <div
+                                    *ngIf="gyanForm.controls.myGyan.hasError('required')">
+                                    * Required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="label"><strong>Topic:</strong></label>
+                            <textarea class="form-control" formControlName="topic"
+                                placeholder="Tags (Maths, Physics)"></textarea>
+                            <div style="color: red;" *ngIf="(!formValid) || (gyanForm.controls.topic.dirty)">
+                                <div
+                                    *ngIf="gyanForm.controls.topic.hasError('required')">
+                                    * Required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="label"><strong>Start Time:</strong></label>
+                            <input class="form-control" formControlName="startTime" type="datetime-local">
+                            <div style="color: red;" *ngIf="(!formValid) || (gyanForm.controls.startTime.dirty)">
+                                <div
+                                    *ngIf="gyanForm.controls.startTime.hasError('required')">
+                                    * Required
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="label"><strong>End Time:</strong></label>
+                            <input class="form-control" formControlName="endTime" type="datetime-local">
+                            <div style="color: red;" *ngIf="(!formValid) || (gyanForm.controls.endTime.dirty)">
+                                <div
+                                    *ngIf="gyanForm.controls.endTime.hasError('required')">
+                                    * Required
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-toggle="modal" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" role="button" class="btn btn-dark" data-toggle="modal" (click)="submitGyan()" data-bs-dismiss="modal">Post
+                        Gyan</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</main>

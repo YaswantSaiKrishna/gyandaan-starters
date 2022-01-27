@@ -1,0 +1,31 @@
+    <section class="login-clean" >
+        <form [formGroup]="loginForm">
+            <h2 style="text-align: center;">{{loginFormLabel}} Login</h2>
+            <div class="illustration">
+                <img class="rounded-circle img-fluid border-dark shadow" src={{imageURL}} style="transform: scale(0.75);">
+            </div>
+            <div class="mb-3">
+                <input class="form-control" formControlName="email" type="email" name="email" placeholder="Email">
+            </div>
+            <div class="Validation-msg" *ngIf="(!formvalid) || (loginForm.controls.email.dirty)">
+                <div *ngIf="loginForm.controls.email.hasError('required') && !loginForm.controls.email.valid">
+                  * Required
+                </div>
+                <div *ngIf="loginForm.controls.email.hasError('email') ">
+                  * should be valid format
+                </div>
+              </div>
+            <div class="mb-3">
+                <input class="form-control" formControlName="password" type="password" name="password" placeholder="Password">
+            </div>
+            <div class="Validation-msg" *ngIf="(!formvalid) || (loginForm.controls.password.dirty)">
+                <div *ngIf="loginForm.controls.password.hasError('required') && !loginForm.controls.password.valid">
+                  * Required
+                </div>
+              </div>
+            <div class="mb-3">
+                <button class="btn btn-dark d-block w-100" type="submit" role="button" (click)="loginSubmit()" style="color: var(--bs-light);">Log In</button>
+            </div>
+            <a class="forgot" href="#">Forgot your email or password?</a>
+        </form>
+    </section>

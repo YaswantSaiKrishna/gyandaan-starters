@@ -1,0 +1,57 @@
+<section class="register-photo">
+    <div class="form-container">
+        <div class="image-holder"></div>
+        <form [formGroup]="registerForm">
+            <h2 class="text-center"><strong>Create</strong> an account.</h2>
+            <div class="mb-3">
+                <select class="form-select" formControlName="type">
+                    <option value="Student" [selected]="true">Student</option>
+                    <option value="Mentor">Mentor</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" formControlName="email" type="email" name="email" placeholder="Email">
+                <div style="color: red;" *ngIf="(!formValid) || (registerForm.controls.email.dirty)">
+                    <div *ngIf="registerForm.controls.email.hasError('required')">
+                        * Required
+                    </div>
+                    <div *ngIf="registerForm.controls.email.hasError('email') ">
+                        * should be valid format
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" formControlName="password" type="password" name="password" placeholder="Password">
+                <div style="color: red;" *ngIf="(!formValid) || (registerForm.controls.password.dirty)">
+                    <div *ngIf="registerForm.controls.password.hasError('required')">
+                        * Required
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <input class="form-control" formControlName="confirmPassword" type="password" name="password-repeat"
+                    placeholder="Password (repeat)">
+                    <div style="color: red;" *ngIf="(!formValid) || (registerForm.controls.confirmPassword.dirty)">
+                        <div *ngIf="registerForm.controls.confirmPassword.hasError('required')">
+                            * Required
+                        </div>
+                        <div *ngIf="(registerForm.value.password != registerForm.value.confirmPassword) && !registerForm.controls.confirmPassword.hasError('required')">
+                            * Password does not match
+                        </div>
+                    </div>
+                </div>
+            <div class="mb-3">
+                <div class="form-check"><label class="form-check-label">
+                    <input class="form-check-input" formControlName="termsAndConditions" type="checkbox">I agree to the license terms.</label>
+                </div>
+                <div style="color: red;" *ngIf="(!formValid) || (registerForm.controls.termsAndConditions.dirty)">
+                    <div *ngIf="registerForm.controls.termsAndConditions.hasError('required')">
+                        * Required
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3"><a class="btn btn-primary d-block w-100" role="button" (click)="submitRegister()" >Sign Up</a></div>
+            <a class="already" href="#r1">You already have an account? <span style="color: rgb(0, 102, 255);">Login here.</span></a>
+        </form>
+    </div>
+</section>
